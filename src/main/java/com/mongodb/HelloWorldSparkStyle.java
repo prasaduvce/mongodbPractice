@@ -12,7 +12,9 @@ public class HelloWorldSparkStyle {
     public static void main(String[] args) {
         Spark.get("/hello", new Route() {
             public Object handle(Request request, Response response) throws Exception {
-                return "Hello World from Spark";
+				System.out.println("request.ip() ===> "+request.ip());
+				System.out.println("request.getClass().getName() ===> "+request.getClass().getName());
+				return "Hello World from Spark";
             }
         });
 

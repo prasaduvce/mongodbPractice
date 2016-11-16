@@ -37,7 +37,7 @@ public class HelloWorldSparkFreemarkerStyle {
                     Spark.halt(500);
                     e.printStackTrace();
                 }
-                return writer.toString();
+                return writer;
             }
         });
 

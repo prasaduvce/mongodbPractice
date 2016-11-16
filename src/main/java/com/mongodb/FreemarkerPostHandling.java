@@ -17,12 +17,12 @@ import java.util.Map;
 /**
  * Created by renuka.prasad on 8/16/2016.
  */
-public class HelloWorldSparkFreemarkerPostStyle {
+public class FreemarkerPostHandling {
     public static void main(String[] args) {
         final Configuration configuration = new Configuration();
-        configuration.setClassForTemplateLoading(HelloWorldSparkFreemarkerPostStyle.class, "/");
+        configuration.setClassForTemplateLoading(FreemarkerPostHandling.class, "/");
 
-        Spark.get("/hello", new Route() {
+        Spark.get("/fruits", new Route() {
             public Object handle(Request request, Response response) throws Exception {
                 StringWriter writer = new StringWriter();
                 try {
@@ -30,7 +30,6 @@ public class HelloWorldSparkFreemarkerPostStyle {
                     Map<String, Object> fruitsListMap = new HashMap<String, Object>();
                     fruitsListMap.put("fruits", Arrays.asList("Apple", "Banana", "Guava", "Watermelon"));
                     fruitPickerTemplate.process(fruitsListMap, writer);
-                    System.out.println(writer);
                 } catch (IOException e) {
                     Spark.halt(500);
                     e.printStackTrace();
@@ -38,7 +37,7 @@ public class HelloWorldSparkFreemarkerPostStyle {
                     Spark.halt(500);
                     e.printStackTrace();
                 }
-                return writer.toString();
+                return writer;
             }
         });
 
