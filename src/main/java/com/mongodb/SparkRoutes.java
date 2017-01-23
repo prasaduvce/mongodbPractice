@@ -21,6 +21,7 @@ public class SparkRoutes {
 
 		Spark.get("/echo/:thing", new Route() {
 			public Object handle(Request request, Response response) throws Exception {
+				System.out.println("request.params() ====> "+request.params());
 				return "Path Parameter Value is " + request.params(":thing");
 			}
 		});
